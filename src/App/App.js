@@ -22,6 +22,16 @@ class App extends Component {
     .catch(error => console.log(error))
   }
 
+  saveReservation(reservation) {
+    fetch('http://localhost:3001/api/v1/reservations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(reservation)
+    })
+  }
+
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value })
   }
@@ -39,6 +49,7 @@ class App extends Component {
       number: this.state.number
     }
     this.setState({ reservations: [...this.state.reservations, newReservation]})
+    this.saveReservation(newReservation)
     this.clearInputs()
   }
 
