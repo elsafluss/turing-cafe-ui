@@ -53,13 +53,23 @@ class App extends Component {
     this.clearInputs()
   }
 
+  deleteReservation = (event) => {
+    event.preventDefault()
+    const id = event.target.closest('div').id
+    console.log(event.target.closest('div').id)
+    fetch(`http://localhost:3001/api/v1/reservations/${id}`, {
+      method: "DELETE"
+    })
+  }
+
   render() {
     const showReservations = this.state.reservations.map(item => 
-      <div className="resy" key={item.id}>
+      <div className="resy" key={item.id} id={item.id}>
         <p className="resy-name" key={item.name}>for: {item.name}</p>
         <p className="resy-date" key={item.date}>on: {item.date}</p>
         <p className="resy-time" key={item.time}>at: {item.time}</p>
         <p className="resy-number" key={item.number}>guests: {item.number}</p>
+        <button className="cancel" onClick={this.deleteReservation}>Cancel Reservation</button>
       </div>
     )
     return (
