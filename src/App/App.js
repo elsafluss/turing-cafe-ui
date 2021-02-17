@@ -44,12 +44,12 @@ class App extends Component {
 
   render() {
     const showReservations = this.state.reservations.map(item => 
-      <>
-        <p className="resy" key={`${item.id}${item.name}`}>for: {item.name}</p>
-        <p className="resy" key={`${item.id}${item.date}`}>on: {item.date}</p>
-        <p className="resy" key={`${item.id}${item.time}`}>at: {item.time}</p>
-        <p className="resy" key={`${item.id}${item.number}`}>guests: {item.number}</p>
-      </>
+      <div className="resy">
+        <p className="resy-name" key={`${item.id}${item.name}`}>for: {item.name}</p>
+        <p className="resy-date" key={`${item.id}${item.date}`}>on: {item.date}</p>
+        <p className="resy-time" key={`${item.id}${item.time}`}>at: {item.time}</p>
+        <p className="resy-number" key={`${item.id}${item.number}`}>guests: {item.number}</p>
+      </div>
     )
     return (
       <div className="App">
@@ -62,7 +62,9 @@ class App extends Component {
           <button className="submit-button" type='submit' onClick={this.addReservation}>Make Reservation</button>
         </form>
         <div className='resy-container'>
+          <>
           {showReservations}
+          </>
         </div>
       </div>
     )

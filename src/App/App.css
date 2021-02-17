@@ -23,7 +23,15 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.resy {
+.resy-name,
+.resy-date,
+.resy-time,
+.resy-number {
   background-color: aliceblue;
+  padding: .5em 1em;
+  margin: 0 1em;
+}
 
+.resy {
+  margin: .5em;
 }
