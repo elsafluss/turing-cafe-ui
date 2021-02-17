@@ -23,6 +23,10 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+.resy-form input{
+  margin: 1em;
+}
+
 .resy-name,
 .resy-date,
 .resy-time,

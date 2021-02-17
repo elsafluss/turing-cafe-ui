@@ -55,11 +55,11 @@ class App extends Component {
 
   render() {
     const showReservations = this.state.reservations.map(item => 
-      <div className="resy">
-        <p className="resy-name" key={`${item.id}${item.name}`}>for: {item.name}</p>
-        <p className="resy-date" key={`${item.id}${item.date}`}>on: {item.date}</p>
-        <p className="resy-time" key={`${item.id}${item.time}`}>at: {item.time}</p>
-        <p className="resy-number" key={`${item.id}${item.number}`}>guests: {item.number}</p>
+      <div className="resy" key={item.id}>
+        <p className="resy-name" key={item.name}>for: {item.name}</p>
+        <p className="resy-date" key={item.date}>on: {item.date}</p>
+        <p className="resy-time" key={item.time}>at: {item.time}</p>
+        <p className="resy-number" key={item.number}>guests: {item.number}</p>
       </div>
     )
     return (
