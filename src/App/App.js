@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 
-// {name: <String>, date: <String>, time: <String>, number: <Number>}
-
 class App extends Component {
   constructor() {
     super()
@@ -12,6 +10,7 @@ class App extends Component {
       date: '',
       time: '',
       number: '',
+      id: ''
     }
   }
 
@@ -46,7 +45,8 @@ class App extends Component {
       name: this.state.name,
       date: this.state.date,
       time: this.state.time,
-      number: this.state.number
+      number: this.state.number,
+      id: Date.now()
     }
     this.setState({ reservations: [...this.state.reservations, newReservation]})
     this.saveReservation(newReservation)
@@ -55,11 +55,14 @@ class App extends Component {
 
   deleteReservation = (event) => {
     event.preventDefault()
-    const id = event.target.closest('div').id
-    console.log(event.target.closest('div').id)
+    const id = Number(event.target.closest('div').id)
     fetch(`http://localhost:3001/api/v1/reservations/${id}`, {
       method: "DELETE"
     })
+    .then(response => console.log(response.json()))
+    .catch(error => console.log(error))
+    const updatedReservations = this.state.reservations.filter(item => item.id !== id)
+    this.setState({ reservations: updatedReservations })    
   }
 
   render() {
