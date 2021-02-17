@@ -59,7 +59,7 @@ class App extends Component {
     fetch(`http://localhost:3001/api/v1/reservations/${id}`, {
       method: "DELETE"
     })
-    .then(response => console.log(response.json()))
+    .then(response => response.json)
     .catch(error => console.log(error))
     const updatedReservations = this.state.reservations.filter(item => item.id !== id)
     this.setState({ reservations: updatedReservations })    
